@@ -1,30 +1,16 @@
-/**
- *
- * <div id="parent">
- *      <div id="child">
- *          <h1>I'm h1 tag</h1>
- *          <h2>I'm h2 tag</h2>
- *      </div>
- * <div id="child2">
- *          <h1>I'm h1 tag</h1>
- *          <h2>I'm h2 tag</h2>
- *      </div>
- * </div>
- *
- *
- *
- */
+import React from "react";
+import ReactDOM from "react-dom/client";
 
 const heading = React.createElement(
     "div",
     { id: "parent" },
     [React.createElement("div", { id: "child" }, [
-      React.createElement("h1", { Title: "I'm h1 tag" }, "I'm h1 tag"),
-      React.createElement("h2", { Title: "I'm h2 tag" }, "I'm h2 tag"),
+      React.createElement("h1", { title: "I'm h1 tag" }, "I'm h1 tag"),
+      React.createElement("h2", { title: "I'm h2 tag" }, "I'm h2 tag"),
     ]),
     React.createElement("div", { id: "child2" }, [
-      React.createElement("h1", { Title: "I'm h1 tag" }, "I'm h1 tag"),
-      React.createElement("h2", { Title: "I'm h2 tag" }, "I'm h2 tag"),
+      React.createElement("h1", { title: "I'm h1 tag" }, "I'm h1 tag"),
+      React.createElement("h2", { title: "I'm h2 tag" }, "I'm h2 tag"),
     ])]
   );
   
