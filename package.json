@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "I'm learning React, here All my practices things will store. Thank you Akshay Saini.",
   "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "repository": {
