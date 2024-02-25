@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import icon from "./assests/profile.gif";
 
 //JSX => Babel is transpiles it into React.createElement => ReactElement - JS Object => HTMLElement(render);
 const heading = <h1>Namaste React from JSX!!</h1>;
@@ -31,7 +32,7 @@ const dimentions = 24;
 const logoFimentions = 36;
 const UserIconComponent = () => (
   <img
-    src="./assests/profile.gif"
+    src={icon}
     alt="User Logo"
     width={dimentions}
     height={dimentions}
