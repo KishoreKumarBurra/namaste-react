@@ -1,33 +1,35 @@
-import { useState, useEffect } from "react";
 import ShimmerUI from "./ShimmerUI";
+import { useParams } from "react-router-dom";
+import useRestaurantMenu from "../../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
+  const { resId } = useParams();
+  const resInfo = useRestaurantMenu(resId);
 
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  const fetchMenu = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.47832353074318&lng=78.37417326449751&restaurantId=120129&catalog_qa=undefined&submitAction=ENTER"
-    );
-    const json = await data.json();
-    console.log("json=", json);
-    setResInfo(json.data);
-   // setResInfo(json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR);
-   console.log('cards==', json?.data?.cards[2]);
-  };
-
-  //const { itemCards } = resInfo?.cards[1].card?.card.itemCards;
-
-  const { name, city, costForTwoMessage, cusinies, totalRatingsString } = resInfo?.cards[2]?.card?.card?.info;
-
-  return resInfo === null ? <ShimmerUI/> :(
+  if (resInfo === null) return <ShimmerUI />;
+  const { name, cuisines, costForTwoMessage } =
+    resInfo?.cards[0]?.card?.card?.info;
+  const { title } =
+  resInfo?.cards[2].groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;  
+  //resInfo?.cards[2].groupedCard?.cardGroupMap?.REGULAR?.cards[4]?.card?.card;
+  const { itemCards } =
+  resInfo?.cards[2].groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;  
+  //resInfo?.cards[2].groupedCard?.cardGroupMap?.REGULAR?.cards[4]?.card?.card;
+  return (
     <div className="Menu">
-        <h1>{name}</h1>
-        <h2>Menu</h2>
-        <h3></h3>
+      <h1>{name}</h1>
+      <p>
+        {cuisines.join(", ")} - {costForTwoMessage}
+      </p>
+      <h2>Menu</h2>
+      <h3>
+        {title}
+      </h3>
+      <ul>
+        {itemCards.map((item) => (
+          <li key={item?.card?.info?.id}>{item?.card?.info?.name} - {item?.card?.info?.price/100}</li>
+        ))}
+      </ul>
     </div>
   );
 };

@@ -5,4 +5,4 @@ export const LOGO_URL =
 
 export const REAL_SWIGGY_URL = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.47832353074318&lng=78.37417326449751&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
 
-export const SWIGGY_RESTAURANTS_LIST_URL = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.47832353074318&lng=78.37417326449751&restaurantId="
+export const SWIGGY_RES_MENU_API = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.47832353074318&lng=78.37417326449751&restaurantId="
